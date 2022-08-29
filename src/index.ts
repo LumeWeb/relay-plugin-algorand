@@ -6,7 +6,9 @@ import type {
 } from "@lumeweb/relay-types";
 import minimatch from "minimatch";
 // @ts-ignore
-import HTTPClient from "algosdk/dist/cjs/src/client/client.js";
+import { default as HTTPClientImport } from "algosdk/dist/cjs/src/client/client.js";
+
+const { default: HTTPClient } = HTTPClientImport;
 
 const allowedEndpoints: { [endpoint: string]: ("GET" | "POST")[] } = {
   "/v2/teal/compile": ["POST"],
