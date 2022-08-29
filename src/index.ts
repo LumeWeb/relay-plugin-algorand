@@ -56,8 +56,8 @@ export function proxyRestMethod(
         resp = await client.get(endpoint, query, fullHeaders);
         break;
       case "POST":
-        if (Array.isArray(data?.data)) {
-          data = new Uint8Array(Buffer.from(data.data));
+        if (Array.isArray(data) || Buffer.isBuffer(data)) {
+          data = new Uint8Array(Buffer.from(data));
         }
 
         resp = await client.post(endpoint, data, { ...fullHeaders });
