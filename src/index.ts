@@ -98,10 +98,6 @@ const plugin: Plugin = {
       cacheable: true,
       async handler(request: RPCRequest): Promise<RPCResponse | null> {
         let resp = await rest_request(request);
-        if ("current-round" in resp) {
-          resp["current-round"] = 0;
-        }
-
         return { data: resp };
       },
     });
@@ -109,6 +105,10 @@ const plugin: Plugin = {
       cacheable: true,
       async handler(request: RPCRequest): Promise<RPCResponse | null> {
         let resp = await indexer_request(request);
+
+        if ("current-round" in resp) {
+          resp["current-round"] = 0;
+        }
 
         return { data: resp };
       },
