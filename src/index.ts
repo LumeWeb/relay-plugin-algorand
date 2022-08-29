@@ -33,7 +33,7 @@ export function proxyRestMethod(
     }
 
     if (!endpoint) {
-      throw new Error("Endpoint Missing");
+      throw new Error("ENDPOINT_MISSING");
     }
 
     let found = false;
